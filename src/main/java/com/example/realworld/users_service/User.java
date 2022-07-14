@@ -1,6 +1,5 @@
 package com.example.realworld.users_service;
 
-import java.util.Optional;
 import java.util.UUID;
 
 public class User {

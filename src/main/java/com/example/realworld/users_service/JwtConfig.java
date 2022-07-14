@@ -7,8 +7,7 @@ import org.springframework.core.env.Environment;
 
 @Configuration
 public class JwtConfig {
-    @Autowired
-    private Environment env;
+    @Autowired private Environment env;
 
     @Bean
     JwtService jwtService() {

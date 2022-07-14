@@ -11,6 +11,9 @@ public class JwtServiceImpl implements JwtService {
     }
 
     public String makeToken(User user) {
-        return JWT.create().withSubject(user.getEmail()).withIssuer("realworld.example.com").sign(algorithm);
+        return JWT.create()
+                .withSubject(user.getEmail())
+                .withIssuer("realworld.example.com")
+                .sign(algorithm);
     }
 }

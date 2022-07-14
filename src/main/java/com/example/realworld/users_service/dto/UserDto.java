@@ -1,11 +1,11 @@
 package com.example.realworld.users_service.dto;
 
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.WRAPPER_OBJECT;
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
+
 import com.example.realworld.users_service.User;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-
-import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.WRAPPER_OBJECT;
-import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
 
 @JsonTypeName("user")
 @JsonTypeInfo(include = WRAPPER_OBJECT, use = NAME)
@@ -17,7 +17,8 @@ public class UserDto {
     private final String image;
 
     public static UserDto fromUserAndToken(User user, String token) {
-        return new UserDto(user.getEmail(), token, user.getUsername(), user.getBio(), user.getImage());
+        return new UserDto(
+                user.getEmail(), token, user.getUsername(), user.getBio(), user.getImage());
     }
 
     private UserDto(String email, String token, String username, String bio, String image) {

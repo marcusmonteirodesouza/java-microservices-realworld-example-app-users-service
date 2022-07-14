@@ -20,7 +20,8 @@ public class UsersController {
 
     @PostMapping("/users")
     public UserDto registerUser(@RequestBody @Validated RegisterUserRequestDto request) {
-        var user = usersService.registerUser(request.username(), request.email(), request.password());
+        var user =
+                usersService.registerUser(request.username(), request.email(), request.password());
         var token = jwtService.makeToken(user);
         return UserDto.fromUserAndToken(user, token);
     }
