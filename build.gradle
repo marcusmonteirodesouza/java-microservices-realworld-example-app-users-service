@@ -25,6 +25,13 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
+tasks.register('updateGitHooks', Copy) {
+    from './scripts/pre-commit'
+    into './.git/hooks'
+}
+
+compileJava.dependsOn updateGitHooks
+
 spotless {
     java {
         googleJavaFormat('1.8').aosp().reflowLongStrings()
