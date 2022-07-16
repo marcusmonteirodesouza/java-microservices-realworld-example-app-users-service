@@ -17,6 +17,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.security:spring-security-test'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'com.oracle.database.jdbc:ojdbc8'
     implementation 'com.auth0:java-jwt:4.0.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
@@ -34,6 +36,6 @@ compileJava.dependsOn updateGitHooks
 
 spotless {
     java {
-        googleJavaFormat('1.8').aosp().reflowLongStrings()
+        googleJavaFormat('1.15.0').aosp().reflowLongStrings()
     }
 }

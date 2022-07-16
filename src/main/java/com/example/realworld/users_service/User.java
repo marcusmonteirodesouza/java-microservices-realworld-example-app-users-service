@@ -1,32 +1,48 @@
 package com.example.realworld.users_service;
 
+import java.sql.Timestamp;
 import java.util.UUID;
 
 public class User {
     private UUID id;
-    private String email;
+
     private String username;
+
+    private String email;
 
     private String passwordHash;
     private String bio;
     private String image;
 
-    public User(String email, String username, String passwordHash) {
-        this.email = email;
+    private Timestamp createdAt;
+
+    private Timestamp updatedAt;
+
+    public User(
+            UUID id,
+            String username,
+            String email,
+            String passwordHash,
+            Timestamp createdAt,
+            Timestamp updatedAt) {
+        this.id = id;
         this.username = username;
+        this.email = email;
         this.passwordHash = passwordHash;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     public UUID getId() {
         return id;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
     public String getUsername() {
         return username;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public String getPasswordHash() {
@@ -39,5 +55,13 @@ public class User {
 
     public String getImage() {
         return image;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
     }
 }

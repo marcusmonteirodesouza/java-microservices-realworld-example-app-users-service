@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  app:
+    build: .
+    ports:
+      - "${PORT}:${PORT}"
+    environment:
+      - DATABASE_HOST=${DATABASE_HOST}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_PORT=${DATABASE_PORT}
+      - DATABASE_NAME=${DATABASE_NAME}
+    depends_on:
+      database:
+        condition:
+          service_healthy
+  database:
+    image: oracle/database:21.3.0-xe
+    ports:
+      - "${DATABASE_PORT}:${DATABASE_PORT}"
+      - "${DATABASE_EM_PORT}:${DATABASE_EM_PORT}"
+    environment:
+      - ORACLE_PDB=${DATABASE_NAME}
+    volumes:
+      - ./oradata:/opt/oracle/oradata
+      - ./src/main/resources/db/migration:/opt/oracle/scripts/startup
+    healthcheck:
+      test: ["CMD", "/opt/oracle/checkDBStatus.sh", ">/dev/null", "|| exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 30
