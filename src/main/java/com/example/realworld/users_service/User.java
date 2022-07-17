@@ -1,5 +1,6 @@
 package com.example.realworld.users_service;
 
+import java.sql.Blob;
 import java.sql.Timestamp;
 import java.util.UUID;
 
@@ -11,7 +12,7 @@ public class User {
     private String email;
 
     private String passwordHash;
-    private String bio;
+    private Blob bio;
     private String image;
 
     private Timestamp createdAt;
@@ -23,6 +24,8 @@ public class User {
             String username,
             String email,
             String passwordHash,
+            Blob bio,
+            String image,
             Timestamp createdAt,
             Timestamp updatedAt) {
         this.id = id;
@@ -49,7 +52,7 @@ public class User {
         return passwordHash;
     }
 
-    public String getBio() {
+    public Blob getBio() {
         return bio;
     }
 

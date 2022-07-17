@@ -17,8 +17,12 @@ public class UserDto {
     private final String image;
 
     public static UserDto fromUserAndToken(User user, String token) {
-        return new UserDto(
-                user.getEmail(), token, user.getUsername(), user.getBio(), user.getImage());
+        String bio = null;
+        if (user.getBio() != null) {
+            bio = user.getBio().toString();
+        }
+
+        return new UserDto(user.getEmail(), token, user.getUsername(), bio, user.getImage());
     }
 
     private UserDto(String email, String token, String username, String bio, String image) {
